@@ -21,17 +21,6 @@ fish.style.transform = `translateX(${randomX}px) translateY(${randomY}px)`;
 
 //Getting the two random stocks
 fetchHandler();
-
-
-//user presses space to start the fish
-window.addEventListener("keyup", event => {
-    if(event.code === 'Space' && !loading){
-        hideStart(); 
-        start = undefined;
-        window.requestAnimationFrame(startFish); 
-    }
-}) 
-
  
 /* Helper functions */
 
@@ -76,7 +65,7 @@ function startFish(timestamp) {
     stock1.innerText = stock_1 + ` : ${Math.floor(stockOneScore / 60)}`;
 
   }
-  else{ 
+  else{
     stock1.style.color = "black";
     stock2.style.color = "lime";
     stockTwoScore += 1;
@@ -110,6 +99,13 @@ function fetchHandler(){
     });
 }
 
+//Button onclick function to start the fish
+
+function startHandler(){
+  hideStart(); 
+  start = undefined;
+  window.requestAnimationFrame(startFish); 
+}
 
 /* Functions that displays the loading and the start screen */
 
