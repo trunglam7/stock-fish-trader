@@ -64,6 +64,7 @@ body{
     border-style: none;
     cursor: pointer;
     font-weight: bold;
+    color: black;
 }
 
 form input{
