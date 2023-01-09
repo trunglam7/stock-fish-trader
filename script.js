@@ -2,6 +2,7 @@ const tank = document.getElementById("tank");
 const fish = document.getElementById("fish");
 const stock1 = document.getElementById("stock-1");
 const stock2 = document.getElementById("stock-2");
+let time = 3600;
 
 const apiKey = "cetkb7iad3i5jsal6q80cetkb7iad3i5jsal6q8g";
 
@@ -60,25 +61,25 @@ function startFish(timestamp) {
 
   if(randomX < maxX / 2){
     stock1.style.color = "lime";
-    stock2.style.color = "black";
+    stock2.style.color = "white";
     stockOneScore += 1;
     stock1.innerText = stock_1 + ` : ${Math.floor(stockOneScore / 60)}`;
 
   }
   else{
-    stock1.style.color = "black";
+    stock1.style.color = "white";
     stock2.style.color = "lime";
     stockTwoScore += 1;
     stock2.innerText = stock_2 + ` : ${Math.floor(stockTwoScore / 60)}`;
   }
   
 
-  if (elapsed < 3600000) {
+  if (elapsed < time * 1000) {
     previousTimeStamp = timestamp;
     window.requestAnimationFrame(startFish);
   }
   else{
-    stockOneScore > stockTwoScore ? (stock1.style.color = "yellow", stock2.style.color = "black") : (stock1.style.color = "black", stock2.style.color = "yellow")
+    stockOneScore > stockTwoScore ? (stock1.style.color = "yellow", stock2.style.color = "white") : (stock1.style.color = "white", stock2.style.color = "yellow")
   }
 }
 
@@ -102,7 +103,17 @@ function fetchHandler(){
 //Button onclick function to start the fish
 
 function startHandler(){
-  hideStart(); 
+  const duration = document.getElementById("duration").value;
+
+  if(Number.isInteger(parseInt(duration)) && duration > 0){
+    time = duration;
+  }
+  else{
+    alert("Invalid Input");
+    window.location.reload();
+  }
+
+  hideStart();
   start = undefined;
   window.requestAnimationFrame(startFish); 
 }

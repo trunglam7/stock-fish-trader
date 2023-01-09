@@ -2,11 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    background-color: black;
 }
 
 .tank{
     height: 100vh;
-    background-color: blue;
+    background-color: aquamarine;
     position: relative;
 }
 
@@ -27,7 +32,11 @@
     justify-content: space-between;
     padding: 10px 15%;
     text-transform: uppercase;
+    color: white;
+    text-shadow: 0.7px 0.7px black,
+                -0.7px -0.7px black;
 }
+
 
 .loading-screen, .start-screen, .orientation-screen{
     position: absolute;
@@ -37,6 +46,46 @@
     place-content: center;
     z-index: 1;
     display: none;
+}
+
+.loading-screen{
+    color: white;
+    font-weight: bold;
+}
+
+.start-screen{
+    text-align: center;
+}
+
+.start-btn{
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form input{
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border-style: none;
+    margin-bottom: 20px;
+}
+
+h1{
+    margin-bottom: 10px;
+}
+
+.orientation-screen{
+    color: white;
+    font-weight: bold;
+    background-color: gray;
+}
+
+.orientation-screen img{
+    width: 100%;
 }
 
 @media (orientation: portrait) {
