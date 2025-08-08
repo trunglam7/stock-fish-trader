@@ -85,18 +85,16 @@ function startFish(timestamp) {
 
 // Calls the API to get the two random stocks
 
-function fetchHandler() {
+function fetchHandler(){
   displayLoading();
   fetch(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
-      // Shuffle and take two random stocks
-      const shuffled = data.sort(() => Math.random() - 0.5);
-      const [stock_1, stock_2] = shuffled.slice(0, 2);
-
-      stock1.innerText = stock_1.symbol;
-      stock2.innerText = stock_2.symbol;
-
+      data.sort(() => Math.random() - Math.random).slice(0, 2);
+      stock_1 = data[0].symbol;
+      stock_2 = data[1].symbol;
+      stock1.innerText = stock_1;
+      stock2.innerText = stock_2;
       hideLoading();
       displayStart();
     });
@@ -144,4 +142,5 @@ function hideStart(){
   const startScreen = document.getElementById("start-screen");
   startScreen.style.display = "none";
 }
+
 
