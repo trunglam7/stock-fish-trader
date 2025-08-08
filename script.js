@@ -90,7 +90,7 @@ function fetchHandler(){
   fetch(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
-      data.sort(() => Math.random() - Math.random().slice(0, 2);
+      data.sort(() => Math.random() - 0.5).slice(0, 2);
       stock_1 = data[0].symbol;
       stock_2 = data[1].symbol;
       stock1.innerText = stock_1;
@@ -142,6 +142,7 @@ function hideStart(){
   const startScreen = document.getElementById("start-screen");
   startScreen.style.display = "none";
 }
+
 
 
 
